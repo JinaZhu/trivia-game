@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
 const flexCenter = css`
   display: flex;
@@ -110,4 +111,26 @@ export const SubmitButton = styled.button`
   &:hover {
     ${glow}
   }
+`;
+
+//finish component
+export const PlayAgainButton = styled.button`
+  color: #2f2b32;
+  background-color: #f2f2f2;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  padding: 10px 35px;
+  margin-top: 50px;
+  font-size: 25px;
+  font-family: "Open Sans";
+  &:hover {
+    ${glow}
+  }
+`;
+
+export const Score = styled.p`
+  font-family: "Rubik", sans-serif;
+  font-size: ${(props) => props.size || 50}px;
+  margin: 0;
 `;

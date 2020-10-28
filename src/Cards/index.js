@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { CardsContainer, CarouselContainer, Arrows } from "./styled";
+import { CardsContainer } from "./styled";
 
 import CurrentCard from "./CurrentCard";
-import left from "../images/left.svg";
-import right from "../images/right.svg";
+import Finish from "./Finish";
 import { triviaQuestions } from "./triviaQuestions";
 
 const total_questions = triviaQuestions.length;
 const currentRoundQuestions = [];
-
-const question = {
-  question: "What is the name for a cow-bison hybrid?",
-  options: ["Cowson", "Bicow", "Beefalo", "Mooson"],
-  correct: "Beefalo",
-};
 
 const Cards = () => {
   const [score, setScore] = useState(0);
@@ -27,7 +20,7 @@ const Cards = () => {
   // console.log(questionn);
 
   function selectRandomQuestions() {
-    while (currentRoundQuestions.length <= 10) {
+    while (currentRoundQuestions.length !== 10) {
       const random_index = Math.floor(
         Math.random() * Math.floor(total_questions)
       );
@@ -57,11 +50,12 @@ const Cards = () => {
   if (currentQuestion === undefined) {
     return null;
   }
+  console.log(currentRoundQuestions);
 
   return (
     <CardsContainer>
-      <p>Score: {score}</p>
-      <CarouselContainer>
+      {!isFinish && <p>Score: {score}</p>}
+      {!isFinish && (
         <CurrentCard
           question={currentQuestion}
           setScore={setScore}
@@ -74,7 +68,8 @@ const Cards = () => {
           isIncorrect={isIncorrect}
           setIsIncorrect={setIsIncorrect}
         />
-      </CarouselContainer>
+      )}
+      {isFinish && <Finish score={score} />}
     </CardsContainer>
   );
 };
