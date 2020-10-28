@@ -3,16 +3,53 @@ import { Link } from "react-router-dom";
 
 export const HomepageContainer = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   height: 100vh;
   background-color: #a2bab9;
 `;
 
+export const WindowContainer = styled.div`
+  border: 1px solid #2f2b32;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80vw;
+  height: 70vh;
+  box-shadow: 0 10px 2px -2px gray;
+  flex-direction: column;
+  background-color: #f2f2f2;
+`;
+
+export const WindowBar = styled.div`
+  width: 100%;
+  border-bottom: 1px solid #2f2b32;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+export const FakeButton = styled.div`
+  width: 10%;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const Text = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+`;
 export const Title = styled.h1`
-  font-family: "Rubik", sans-serif;
+  font-family: "Cutive Mono", monospace;
   font-size: 50px;
+  margin-left: 5%;
 `;
 
 export const TitleContainer = styled.div`
@@ -40,29 +77,30 @@ export const StartContainer = styled.div`
 
 export const ReadyH2 = styled.h2`
   font-size: 30px;
+  margin-left: 30%;
 `;
 
 export const GoButton = styled.button`
-  color: #a2bab9;
-  background: #2f2b32;
-  border: none;
+  border: 1px solid #2f2b32;
   cursor: pointer;
-  width: 130px;
-  height: 60px;
   outline: none;
-  margin: 0px 25px;
+  margin-left: 45%;
+  padding: 10px;
 
   &:hover {
-    background: #f2f2f2;
-    box-shadow: 0 0 10px #f2f2f2, 0 0 40px #f2f2f2, 0 0 80px #f2f2f2;
+    background: #2f2b32;
   }
 `;
 
 export const CardLink = styled(Link)`
-  color: #a2bab9;
+  color: #2f2b32;
   text-decoration: none;
   font-size: 50px;
-  font-family: "Rubik", sans-serif;
+  font-family: "Cutive Mono", monospace;
+  font-weight: bold;
   width: 100%;
   height: 100%;
+  &:hover {
+    color: #f2f2f2;
+  }
 `;
