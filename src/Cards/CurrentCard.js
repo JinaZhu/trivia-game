@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Card, Question, Option, SubmitButton } from "./styled";
+import { Link } from "react-router-dom";
+import {
+  Card,
+  Question,
+  Option,
+  SubmitButton,
+  CardWindowBar,
+  ButtonContainer,
+} from "./styled";
+
+import close from "../images/close.svg";
 
 const CurrentCard = ({
   question,
@@ -12,6 +22,7 @@ const CurrentCard = ({
   setIsCorrect,
   isIncorrect,
   setIsIncorrect,
+  questionNumber,
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -48,6 +59,12 @@ const CurrentCard = ({
   console.log(isSubmit);
   return (
     <Card>
+      <CardWindowBar>
+        <p>Question {questionNumber}:</p>
+        <Link to="/">
+          <img src={close} alt="to home" width="20" />
+        </Link>
+      </CardWindowBar>
       <Question>{question.question}</Question>
       {question.options.map((option) => {
         return (
@@ -61,19 +78,21 @@ const CurrentCard = ({
           </Option>
         );
       })}
-      {!isSubmit && (
-        <SubmitButton
-          onClick={(e) => matchAnswer(e, selectedOption)}
-          disabled={isSubmit}
-        >
-          Submit
-        </SubmitButton>
-      )}
-      {isSubmit && (
-        <SubmitButton onClick={(e) => getNextQuestion()} disabled={!isSubmit}>
-          Next
-        </SubmitButton>
-      )}
+      <ButtonContainer>
+        {!isSubmit && (
+          <SubmitButton
+            onClick={(e) => matchAnswer(e, selectedOption)}
+            disabled={isSubmit}
+          >
+            Submit
+          </SubmitButton>
+        )}
+        {isSubmit && (
+          <SubmitButton onClick={(e) => getNextQuestion()} disabled={!isSubmit}>
+            Next
+          </SubmitButton>
+        )}
+      </ButtonContainer>
     </Card>
   );
 };

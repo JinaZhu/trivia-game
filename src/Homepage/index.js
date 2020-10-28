@@ -27,7 +27,7 @@ const Homepage = () => {
           </FakeButton>
         </WindowBar>
         <Text>
-          <Title>Test Your Knowledge.</Title>
+          <Title>Test Your Knowledge</Title>
           <ReadyH2>Ready_</ReadyH2>
           <GoButton>
             <CardLink to="/cards">START</CardLink>

@@ -15,28 +15,7 @@ const glow = css`
 export const CardsContainer = styled.div`
   ${flexCenter}
   height: 100vh;
-  background: #d4805c;
-`;
-
-export const CarouselContainer = styled.div`
-  ${flexCenter}
-  flex-direction: row;
-`;
-
-export const Arrows = styled.button`
-  width: 50px;
-  height: 50px;
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  margin: 20px;
-  cursor: pointer;
-  border-radius: 50%;
-
-  &:hover {
-    box-shadow: 0 0 10px #f2f2f2, 0 0 40px #f2f2f2, 0 0 80px #f2f2f2;
-  }
+  background: #ff4d52;
 `;
 
 //card
@@ -45,22 +24,35 @@ export const Card = styled.div`
   ${flexCenter}
   background: #2f2b32;
   color: #f2f2f2;
-  padding: 20px;
+  padding: 0px 0px 20px 0px;
   width: 400px;
-  height: 450px;
+  height: 500px;
+  justify-content: ${(props) => props.justify || "flex-start"};
+`;
+
+export const CardWindowBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: ${(props) => props.justify || "space-between"};
+  background-color: #f2f2f2;
+  width: 90%;
+  height: 40px;
+  color: #2f2b32;
+  padding: 0 5% 0 5%;
+  font-size: 25px;
 `;
 
 export const Question = styled.div`
-  font-family: "Rubik", sans-serif;
   font-size: 25px;
   width: 90%;
-  margin-bottom: 15px;
+  margin: 20px 0;
+  text-align: left;
 `;
 
 export const Option = styled.div`
   background: #f2f2f2;
   color: #2f2b32;
-  width: 80%;
+  width: 90%;
   margin: 10px;
   font-size: 15px;
   font-weight: bold;
@@ -82,7 +74,7 @@ export const Option = styled.div`
     return (
       props.isCorrect === "red" &&
       css`
-        background-color: #aa5758;
+        background-color: #b21336;
       `
     );
   }}
@@ -91,10 +83,17 @@ export const Option = styled.div`
     return (
       props.isCorrect === "green" &&
       css`
-        background-color: #8b8a65;
+        background-color: #048574;
       `
     );
   }}
+`;
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
 export const SubmitButton = styled.button`
@@ -107,6 +106,7 @@ export const SubmitButton = styled.button`
   margin: 15px;
   cursor: pointer;
   border: none;
+  font-family: "Cutive Mono", monospace;
 
   &:hover {
     ${glow}
@@ -114,6 +114,7 @@ export const SubmitButton = styled.button`
 `;
 
 //finish component
+
 export const PlayAgainButton = styled.button`
   color: #2f2b32;
   background-color: #f2f2f2;
@@ -123,14 +124,13 @@ export const PlayAgainButton = styled.button`
   padding: 10px 35px;
   margin-top: 50px;
   font-size: 25px;
-  font-family: "Open Sans";
+  font-family: "Cutive Mono", monospace;
   &:hover {
     ${glow}
   }
 `;
 
 export const Score = styled.p`
-  font-family: "Rubik", sans-serif;
   font-size: ${(props) => props.size || 50}px;
-  margin: 0;
+  margin: 0 0 20px 0;
 `;

@@ -7,7 +7,7 @@ export const HomepageContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  background-color: #a2bab9;
+  background-color: #ffaa2b;
 `;
 
 export const WindowContainer = styled.div`
@@ -84,7 +84,7 @@ export const GoButton = styled.button`
   border: 1px solid #2f2b32;
   cursor: pointer;
   outline: none;
-  margin-left: 45%;
+  margin-left: 40%;
   padding: 10px;
 
   &:hover {

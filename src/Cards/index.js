@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CardsContainer } from "./styled";
+import { CardsContainer, Score } from "./styled";
 
 import CurrentCard from "./CurrentCard";
 import Finish from "./Finish";
@@ -15,6 +15,7 @@ const Cards = () => {
   const [isCorrect, setIsCorrect] = useState("");
   const [isIncorrect, setIsIncorrect] = useState("");
   const [isFinish, setIsFinish] = useState(false);
+  const [questionNumber, setQuestionNumber] = useState(0);
 
   //   const questionn = currentRoundQuestions[currentQuestion];
   // console.log(questionn);
@@ -37,6 +38,7 @@ const Cards = () => {
     } else {
       const last_index_question = currentRoundQuestions.pop();
       setCurrentQuestion(triviaQuestions[last_index_question]);
+      setQuestionNumber(questionNumber + 1);
       setIsSubmit(false);
       setIsCorrect("");
       setIsIncorrect("");
@@ -54,7 +56,7 @@ const Cards = () => {
 
   return (
     <CardsContainer>
-      {!isFinish && <p>Score: {score}</p>}
+      {!isFinish && <Score size={25}>Score: {score}</Score>}
       {!isFinish && (
         <CurrentCard
           question={currentQuestion}
@@ -67,6 +69,7 @@ const Cards = () => {
           setIsCorrect={setIsCorrect}
           isIncorrect={isIncorrect}
           setIsIncorrect={setIsIncorrect}
+          questionNumber={questionNumber}
         />
       )}
       {isFinish && <Finish score={score} />}
