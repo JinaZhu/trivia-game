@@ -17,9 +17,6 @@ const Cards = () => {
   const [isFinish, setIsFinish] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
 
-  //   const questionn = currentRoundQuestions[currentQuestion];
-  // console.log(questionn);
-
   function selectRandomQuestions() {
     while (currentRoundQuestions.length !== 10) {
       const random_index = Math.floor(
@@ -52,7 +49,6 @@ const Cards = () => {
   if (currentQuestion === undefined) {
     return null;
   }
-  console.log(currentRoundQuestions);
 
   return (
     <CardsContainer>

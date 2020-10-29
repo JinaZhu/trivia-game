@@ -25,6 +25,7 @@ const CurrentCard = ({
   questionNumber,
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
+  const [isEmpty, setIsEmpty] = useState(false);
 
   function setSelectedValue(option) {
     if (!isSubmit) {
@@ -39,7 +40,7 @@ const CurrentCard = ({
     }
   }
 
-  function checkCorrect(option) {
+  function checkCorrectAnswer(option) {
     if (option === question.correct) {
       return isCorrect;
     } else {
@@ -49,6 +50,10 @@ const CurrentCard = ({
 
   function matchAnswer(e, finalAnswer) {
     e.preventDefault();
+    if (finalAnswer === "") {
+      setIsEmpty(true);
+      return;
+    }
     setIsCorrect("green");
     setIsIncorrect("red");
     setIsSubmit(true);
@@ -56,7 +61,7 @@ const CurrentCard = ({
       setScore(score + 1);
     }
   }
-  console.log(isSubmit);
+
   return (
     <Card>
       <CardWindowBar>
@@ -70,9 +75,11 @@ const CurrentCard = ({
         return (
           <Option
             key={option}
-            isCorrect={checkCorrect(option)}
+            isCorrect={checkCorrectAnswer(option)}
             onClick={() => setSelectedValue(option)}
             isActive={checkSelect(option)}
+            isEmpty={isEmpty}
+            onAnimationEnd={() => setIsEmpty(false)}
           >
             <p>{option}</p>
           </Option>

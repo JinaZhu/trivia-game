@@ -1,5 +1,4 @@
-import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
+import styled, { css, keyframes } from "styled-components";
 
 const flexCenter = css`
   display: flex;
@@ -14,7 +13,7 @@ const glow = css`
 
 export const CardsContainer = styled.div`
   ${flexCenter}
-  height: 100vh;
+  min-height: 100vh;
   background: #ff4d52;
 `;
 
@@ -26,8 +25,17 @@ export const Card = styled.div`
   color: #f2f2f2;
   padding: 0px 0px 20px 0px;
   width: 400px;
-  height: 500px;
+  height: 525px;
+  box-shadow: 0 8px 6px -6px black;
   justify-content: ${(props) => props.justify || "flex-start"};
+
+  @media screen and (max-width: 375px) {
+    width: 90vw;
+  }
+  @media screen and (max-width: 320px) {
+    width: 90vw;
+    height: 90vh;
+  }
 `;
 
 export const CardWindowBar = styled.div`
@@ -45,7 +53,7 @@ export const CardWindowBar = styled.div`
 export const Question = styled.div`
   font-size: 25px;
   width: 90%;
-  margin: 20px 0;
+  margin: 25px 0;
   text-align: left;
 `;
 
@@ -70,6 +78,16 @@ export const Option = styled.div`
       `
     );
   }}
+
+  ${(props) => {
+    return (
+      props.isEmpty &&
+      css`
+        animation: ${shake} 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      `
+    );
+  }}
+
   ${(props) => {
     return (
       props.isCorrect === "red" &&
@@ -107,11 +125,30 @@ export const SubmitButton = styled.button`
   cursor: pointer;
   border: none;
   font-family: "Cutive Mono", monospace;
+  outline: none;
 
   &:hover {
     ${glow}
   }
 `;
+
+const shake = keyframes` 
+10%, 90% {
+  transform: translate3d(-5px, 0, 0);
+}
+
+20%, 80% {
+  transform: translate3d(5px, 0, 0);
+}
+
+30%, 50%, 70% {
+  transform: translate3d(-5px, 0, 0);
+}
+
+40%, 60% {
+  transform: translate3d(5px, 0, 0);
+}
+  `;
 
 //finish component
 

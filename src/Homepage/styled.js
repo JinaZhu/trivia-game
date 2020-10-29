@@ -17,9 +17,9 @@ export const WindowContainer = styled.div`
   justify-content: flex-start;
   width: 80vw;
   height: 70vh;
-  box-shadow: 0 10px 2px -2px gray;
   flex-direction: column;
   background-color: #f2f2f2;
+  box-shadow: 0 8px 6px -6px black;
 `;
 
 export const WindowBar = styled.div`
@@ -32,7 +32,7 @@ export const WindowBar = styled.div`
 `;
 
 export const FakeButton = styled.div`
-  width: 10%;
+  width: 100px;
   margin: 10px;
   display: flex;
   align-items: center;
@@ -50,6 +50,10 @@ export const Title = styled.h1`
   font-family: "Cutive Mono", monospace;
   font-size: 50px;
   margin-left: 5%;
+
+  @media screen and (max-width: 420px) {
+    font-size: 40px;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -78,6 +82,10 @@ export const StartContainer = styled.div`
 export const ReadyH2 = styled.h2`
   font-size: 30px;
   margin-left: 30%;
+
+  @media screen and (max-width: 420px) {
+    margin: auto;
+  }
 `;
 
 export const GoButton = styled.button`
@@ -89,6 +97,10 @@ export const GoButton = styled.button`
 
   &:hover {
     background: #2f2b32;
+  }
+
+  @media screen and (max-width: 420px) {
+    margin: 30px auto;
   }
 `;
 
@@ -102,5 +114,9 @@ export const CardLink = styled(Link)`
   height: 100%;
   &:hover {
     color: #f2f2f2;
+  }
+
+  @media screen and (max-width: 420px) {
+    font-size: 40px;
   }
 `;
