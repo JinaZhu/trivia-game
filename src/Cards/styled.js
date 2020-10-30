@@ -90,7 +90,8 @@ export const Option = styled.div`
 
   ${(props) => {
     return (
-      props.isCorrect === "red" &&
+      props.hasSubmitted &&
+      !props.isCorrect &&
       css`
         background-color: #b21336;
       `
@@ -99,7 +100,8 @@ export const Option = styled.div`
 
   ${(props) => {
     return (
-      props.isCorrect === "green" &&
+      props.hasSubmitted &&
+      props.isCorrect &&
       css`
         background-color: #048574;
       `
@@ -151,7 +153,6 @@ const shake = keyframes`
   `;
 
 //finish component
-
 export const PlayAgainButton = styled.button`
   color: #2f2b32;
   background-color: #f2f2f2;
@@ -162,6 +163,7 @@ export const PlayAgainButton = styled.button`
   margin-top: 50px;
   font-size: 25px;
   font-family: "Cutive Mono", monospace;
+  cursor: pointer;
   &:hover {
     ${glow}
   }
