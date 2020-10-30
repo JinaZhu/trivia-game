@@ -21,19 +21,37 @@ function selectRandomQuestions() {
 const currentRoundQuestions = selectRandomQuestions();
 const firstQuestion = triviaQuestions[currentRoundQuestions.pop()];
 
+function randomizedOptions(question) {
+  const allOptions = question.incorrect.concat(question.correct);
+  const randomizedAllOptions = [];
+  while (randomizedAllOptions.length !== allOptions.length) {
+    const selectedOption =
+      allOptions[Math.floor(Math.random() * allOptions.length)];
+    if (!randomizedAllOptions.includes(selectedOption)) {
+      randomizedAllOptions.push(selectedOption);
+    }
+  }
+  return randomizedAllOptions;
+}
+
+const options = randomizedOptions(firstQuestion);
+firstQuestion["options"] = options;
+
 const Cards = () => {
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(firstQuestion);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
-  const [questionNumber, setQuestionNumber] = useState(0);
+  const [questionNumber, setQuestionNumber] = useState(1);
 
   function getNextQuestion() {
     if (currentRoundQuestions.length === 0) {
       setIsFinished(true);
     } else {
-      const lastIndexQuestion = currentRoundQuestions.pop();
-      setCurrentQuestion(triviaQuestions[lastIndexQuestion]);
+      const nextQuestion = triviaQuestions[currentRoundQuestions.pop()];
+      const nextOptions = randomizedOptions(nextQuestion);
+      nextQuestion["options"] = nextOptions;
+      setCurrentQuestion(nextQuestion);
       setQuestionNumber(questionNumber + 1);
       setHasSubmitted(false);
     }
@@ -42,7 +60,7 @@ const Cards = () => {
   if (currentQuestion === undefined) {
     return null;
   }
-
+  console.log(currentQuestion);
   return (
     <CardsContainer>
       {!isFinished && <Score size={25}>Score: {score}</Score>}
