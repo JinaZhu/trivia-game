@@ -90,10 +90,7 @@ const CurrentCard = ({
           </SubmitButton>
         )}
         {hasSubmitted && (
-          <SubmitButton
-            onClick={(e) => getNextQuestion()}
-            disabled={!hasSubmitted}
-          >
+          <SubmitButton onClick={getNextQuestion} disabled={!hasSubmitted}>
             Next
           </SubmitButton>
         )}

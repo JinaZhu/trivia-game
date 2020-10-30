@@ -32,8 +32,8 @@ const Cards = () => {
     if (currentRoundQuestions.length === 0) {
       setIsFinished(true);
     } else {
-      const last_index_question = currentRoundQuestions.pop();
-      setCurrentQuestion(triviaQuestions[last_index_question]);
+      const lastIndexQuestion = currentRoundQuestions.pop();
+      setCurrentQuestion(triviaQuestions[lastIndexQuestion]);
       setQuestionNumber(questionNumber + 1);
       setHasSubmitted(false);
     }
@@ -42,8 +42,6 @@ const Cards = () => {
   if (currentQuestion === undefined) {
     return null;
   }
-
-  console.log(hasSubmitted);
 
   return (
     <CardsContainer>
