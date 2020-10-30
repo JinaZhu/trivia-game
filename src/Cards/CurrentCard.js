@@ -16,19 +16,15 @@ const CurrentCard = ({
   setScore,
   score,
   getNextQuestion,
-  isSubmit,
-  setIsSubmit,
-  isCorrect,
-  setIsCorrect,
-  isIncorrect,
-  setIsIncorrect,
+  hasSubmitted,
+  setHasSubmitted,
   questionNumber,
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [isEmpty, setIsEmpty] = useState(false);
 
   function setSelectedValue(option) {
-    if (!isSubmit) {
+    if (!hasSubmitted) {
       setSelectedOption(option);
     }
   }
@@ -42,9 +38,9 @@ const CurrentCard = ({
 
   function checkCorrectAnswer(option) {
     if (option === question.correct) {
-      return isCorrect;
+      return true;
     } else {
-      return isIncorrect;
+      return false;
     }
   }
 
@@ -54,9 +50,7 @@ const CurrentCard = ({
       setIsEmpty(true);
       return;
     }
-    setIsCorrect("green");
-    setIsIncorrect("red");
-    setIsSubmit(true);
+    setHasSubmitted(true);
     if (finalAnswer === question.correct) {
       setScore(score + 1);
     }
@@ -80,22 +74,23 @@ const CurrentCard = ({
             isActive={checkSelect(option)}
             isEmpty={isEmpty}
             onAnimationEnd={() => setIsEmpty(false)}
+            hasSubmitted={hasSubmitted}
           >
             <p>{option}</p>
           </Option>
         );
       })}
       <ButtonContainer>
-        {!isSubmit && (
+        {!hasSubmitted && (
           <SubmitButton
             onClick={(e) => matchAnswer(e, selectedOption)}
-            disabled={isSubmit}
+            disabled={hasSubmitted}
           >
             Submit
           </SubmitButton>
         )}
-        {isSubmit && (
-          <SubmitButton onClick={(e) => getNextQuestion()} disabled={!isSubmit}>
+        {hasSubmitted && (
+          <SubmitButton onClick={getNextQuestion} disabled={!hasSubmitted}>
             Next
           </SubmitButton>
         )}
