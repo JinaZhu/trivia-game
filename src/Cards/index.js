@@ -5,7 +5,7 @@ import CurrentCard from "./CurrentCard";
 import Finish from "./Finish";
 import triviaQuestions from "./triviaQuestions";
 
-function selectRandomQuestions() {
+export function selectRandomQuestions(triviaQuestions) {
   const questions = [];
   const totalQuestions = triviaQuestions.length;
 
@@ -18,10 +18,10 @@ function selectRandomQuestions() {
   return questions;
 }
 
-const currentRoundQuestions = selectRandomQuestions();
+const currentRoundQuestions = selectRandomQuestions(triviaQuestions);
 const firstQuestion = triviaQuestions[currentRoundQuestions.pop()];
 
-function getRandomizedOptions(question) {
+export function getRandomizedOptions(question) {
   const allOptions = question.incorrect.concat(question.correct);
   const randomizedAllOptions = [];
   while (randomizedAllOptions.length !== allOptions.length) {

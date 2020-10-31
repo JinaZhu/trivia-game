@@ -22,7 +22,6 @@ const CurrentCard = ({
   selectedOption,
   setSelectedOption,
 }) => {
-  // const [selectedOption, setSelectedOption] = useState("");
   const [isEmpty, setIsEmpty] = useState(false);
 
   function setSelectedValue(option) {
@@ -53,13 +52,12 @@ const CurrentCard = ({
       return;
     } else {
       setHasSubmitted(true);
-      // setSelectedOption("");
     }
     if (finalAnswer === question.correct) {
       setScore(score + 1);
     }
   }
-  console.log(selectedOption, "selectedOption");
+
   return (
     <Card>
       <CardWindowBar>
