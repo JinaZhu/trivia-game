@@ -21,7 +21,7 @@ function selectRandomQuestions() {
 const currentRoundQuestions = selectRandomQuestions();
 const firstQuestion = triviaQuestions[currentRoundQuestions.pop()];
 
-function randomizedOptions(question) {
+function getRandomizedOptions(question) {
   const allOptions = question.incorrect.concat(question.correct);
   const randomizedAllOptions = [];
   while (randomizedAllOptions.length !== allOptions.length) {
@@ -34,7 +34,7 @@ function randomizedOptions(question) {
   return randomizedAllOptions;
 }
 
-const options = randomizedOptions(firstQuestion);
+const options = getRandomizedOptions(firstQuestion);
 firstQuestion["options"] = options;
 
 const Cards = () => {
@@ -49,7 +49,7 @@ const Cards = () => {
       setIsFinished(true);
     } else {
       const nextQuestion = triviaQuestions[currentRoundQuestions.pop()];
-      const nextOptions = randomizedOptions(nextQuestion);
+      const nextOptions = getRandomizedOptions(nextQuestion);
       nextQuestion["options"] = nextOptions;
       setCurrentQuestion(nextQuestion);
       setQuestionNumber(questionNumber + 1);
@@ -60,7 +60,7 @@ const Cards = () => {
   if (currentQuestion === undefined) {
     return null;
   }
-  console.log(currentQuestion);
+
   return (
     <CardsContainer>
       {!isFinished && <Score size={25}>Score: {score}</Score>}

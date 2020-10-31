@@ -57,7 +57,6 @@ const CurrentCard = ({
       setScore(score + 1);
     }
   }
-  console.log("isempty", isEmpty);
 
   return (
     <Card>
