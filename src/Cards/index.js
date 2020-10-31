@@ -39,6 +39,7 @@ firstQuestion["options"] = options;
 
 const Cards = () => {
   const [score, setScore] = useState(0);
+  const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestion, setCurrentQuestion] = useState(firstQuestion);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
@@ -54,6 +55,7 @@ const Cards = () => {
       setCurrentQuestion(nextQuestion);
       setQuestionNumber(questionNumber + 1);
       setHasSubmitted(false);
+      setSelectedOption("");
     }
   }
 
@@ -73,6 +75,8 @@ const Cards = () => {
           hasSubmitted={hasSubmitted}
           setHasSubmitted={setHasSubmitted}
           questionNumber={questionNumber}
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
         />
       )}
       {isFinished && <Finish score={score} />}
