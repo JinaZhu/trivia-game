@@ -49,12 +49,15 @@ const CurrentCard = ({
     if (finalAnswer === "") {
       setIsEmpty(true);
       return;
+    } else {
+      setHasSubmitted(true);
+      setSelectedOption("");
     }
-    setHasSubmitted(true);
     if (finalAnswer === question.correct) {
       setScore(score + 1);
     }
   }
+  console.log("isempty", isEmpty);
 
   return (
     <Card>
