@@ -1,3 +1,6 @@
+**Play it live [here!](https://triviaknowledge.herokuapp.com/#/)** <br/>
+***it's hosted on Heroku, please give it a couple seconds to spin up!
+
 ## Description
 
 Test your knowledge and play a round of trivia! Each round consists of 10 questions, see if you can get them all correct. Play as many rounds as you please, every round will be different.
@@ -60,3 +63,5 @@ npm run start
 ## <a name="struggles"></a>Struggles
 
 I learned to write tests for the first time with this application by reading documentations and watching tutorials. Originally, functions I created were doing too many tasks, so I broke them down and created helper functions for my component which allowed me to export them for testing. I realized that there are numerous ways of testing functions and components and it's my main focus to learn to write better tests.
+
+Try it out! [PLAY HERE](https://triviaknowledge.herokuapp.com/#/)
