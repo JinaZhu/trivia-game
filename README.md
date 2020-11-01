@@ -18,6 +18,7 @@ Test your knowledge and play a round of trivia! Each round consists of 10 questi
 - [React](https://reactjs.org/docs/getting-started.html)
 - [styled-components](https://styled-components.com/)
 - [React Router](https://reactrouter.com/)
+- [Heroku](https://heroku.com/)
 
 ## <a name="install"></a>Installation
 
