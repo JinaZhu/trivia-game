@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+## Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Test your knowledge and play a round of trivia! Each round consists of 10 questions, see if you can get them all correct. Play as many rounds as you please, every round will be different.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Technologies](#technologies)
+- [Installation](#install)
+- [Features](#features)
+- [Future Features](#futurePlans)
+- [Struggles](#str)
 
-### `npm start`
+## <a name="technologies"></a>Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [React](https://reactjs.org/docs/getting-started.html)
+- [styled-components](https://styled-components.com/)
+- [React Router](https://reactrouter.com/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## <a name="install"></a>Installation
 
-### `npm test`
+### Steps to get the Flask backend running:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone trivia-game repository
 
-### `npm run build`
+```
+$ git clone https://github.com/JinaZhu/trivia-game.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install the frontend dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Run the frontend app
 
-### `npm run eject`
+```
+npm run start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## <a name="features"></a>Features
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 10 unique questions are randomly generated for each round
+- For each question, the options are shuffled to be in different positions.
+- After selection, user is allow to change their mind as long as the submit button is not clicked.
+- If no option is selected upon submission, no submission will occur and the options will shake indicating the users to make a selection.
+- Upon submitting an answer, the correct answer turns green and the incorrect options turn red and the user's selected option is still highlighted white.
+- Score is kept track on top of question card and is updated after every submission.
+- Overall score is displayed at the end of the round.
+- Replay another round.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img src="./src/images/trivia-demo.gif" /><img src="./src/images/finish.png" height="426"/>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## <a name="futurePlans"></a>Future Features
 
-## Learn More
+- Allow users to submit questions and add questions to the bank.
+- Keep track of the user's highest score.
+- Allow users to select difficulty levels.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## <a name="struggles"></a>Struggles
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I learned to write tests for the first time with this application by reading documentations and watching tutorials. Originally, functions I created were doing too many tasks, so I broke them down and created helper functions for my component which allowed me to export them for testing. I realized that there are numerous ways of testing functions and components and it's my main focus to learn to write better tests.
