@@ -30,13 +30,13 @@ Clone trivia-game repository
 $ git clone https://github.com/JinaZhu/trivia-game.git
 ```
 
-Install the frontend dependencies
+Install dependencies
 
 ```
 npm install
 ```
 
-Run the frontend app
+Run the app
 
 ```
 npm run start
