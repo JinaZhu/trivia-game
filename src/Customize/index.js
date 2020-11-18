@@ -58,6 +58,7 @@ const Customize = () => {
         onChange={(e) => setNewQuestionAnswer(e.target.value)}
       />
       <button onClick={() => addQuestion()}>Submit</button>
+      <p>Thank you for contributing</p>
     </div>
   );
 };
