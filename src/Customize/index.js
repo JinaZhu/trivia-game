@@ -59,6 +59,7 @@ const Customize = () => {
       />
       <button onClick={() => addQuestion()}>Submit</button>
       <p>Thank you for contributing</p>
+      <p>You questions will be added</p>
     </div>
   );
 };
