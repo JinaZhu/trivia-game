@@ -11,12 +11,12 @@ CORS(api)
 @api.route('/api/question', methods=['POST'])
 def add_question():
     question_response = request.get_json()
-    question = question_response.question
-    options = question_response.options
-    answer = question_response.answer
+    question = question_response["question"]
+    options = (",").join(question_response["options"])
+    answer = question_response["answer"]
 
     try:
-        new_question = Question(question=question, options=options, answer=answer)
+        new_question = Question(question=question, option=options, answer=answer)
         db.session.add(new_question)
         db.session.commit()
         return jsonify('yayy')
