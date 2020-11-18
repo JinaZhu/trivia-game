@@ -12,6 +12,7 @@ flask-sqlalchemy = "*"
 "flask.cli" = "*"
 flask-cors = "*"
 psycopg2-binary = "*"
+click = "*"
 
 [dev-packages]
 
