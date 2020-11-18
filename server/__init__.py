@@ -20,3 +20,5 @@ def create_app(config_file="settings.py"):
     app.cli.add_command(create_tables)
 
     return app
+
+    
