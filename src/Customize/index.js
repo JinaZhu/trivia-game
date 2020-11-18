@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const DEBUG = process.env.NODE_ENV === "development" ? true : false;
 const PREFIX = DEBUG
   ? "http://0.0.0.0:8000"
-  : "https://sustainable-fashion.herokuapp.com/";
+  : "https://triviaknowledge.herokuapp.com/";
 const api_path = PREFIX + "/api/question";
 
 const Customize = () => {
