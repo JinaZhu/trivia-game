@@ -7,3 +7,8 @@ from .model import db
 @with_appcontext
 def create_tables():
     db.create_all()
+
+@click.command(name="say_hi")
+@with_appcontext
+def say_hi():
+    print('hi')
