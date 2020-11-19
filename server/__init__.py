@@ -1,7 +1,7 @@
 from flask import Flask
 import os
 
-from .commands import create_tables
+from .commands import create_tables, say_hi
 from .model import db
 from .routes.main import main
 from .routes.api import api
@@ -18,6 +18,7 @@ def create_app(config_file="settings.py"):
     app.register_blueprint(api)
 
     app.cli.add_command(create_tables)
+    app.cli.add_command(say_hi)
 
     return app
 

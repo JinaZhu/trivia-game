@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { CustomizedPage, Addcontainer } from "./styled";
+
 const DEBUG = process.env.NODE_ENV === "development" ? true : false;
 const PREFIX = DEBUG
   ? "http://0.0.0.0:8000"
@@ -34,32 +36,34 @@ const Customize = () => {
   }
 
   return (
-    <div>
-      <p>Question</p>
-      <input type="text" onChange={(e) => setNewQuestion(e.target.value)} />
-      <p>Wrong Options</p>
-      <div>
+    <CustomizedPage>
+      <Addcontainer>
+        <p>Question</p>
+        <input type="text" onChange={(e) => setNewQuestion(e.target.value)} />
+        <p>Wrong Options</p>
+        <div>
+          <input
+            type="text"
+            onChange={(e) => setNewQuestionOption1(e.target.value)}
+          />
+          <input
+            type="text"
+            onChange={(e) => setNewQuestionOption2(e.target.value)}
+          />
+          <input
+            type="text"
+            onChange={(e) => setNewQuestionOption3(e.target.value)}
+          />
+        </div>
+        <p>Answer</p>
         <input
           type="text"
-          onChange={(e) => setNewQuestionOption1(e.target.value)}
+          onChange={(e) => setNewQuestionAnswer(e.target.value)}
         />
-        <input
-          type="text"
-          onChange={(e) => setNewQuestionOption2(e.target.value)}
-        />
-        <input
-          type="text"
-          onChange={(e) => setNewQuestionOption3(e.target.value)}
-        />
-      </div>
-      <p>Answer</p>
-      <input
-        type="text"
-        onChange={(e) => setNewQuestionAnswer(e.target.value)}
-      />
-      <button onClick={() => addQuestion()}>Submit</button>
-      <p>Thank you for contributing</p>
-    </div>
+        <button onClick={() => addQuestion()}>Submit</button>
+        <p>Thank you for contributing</p>
+      </Addcontainer>
+    </CustomizedPage>
   );
 };
 
