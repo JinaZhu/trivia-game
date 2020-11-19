@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 
 export const HomepageContainer = styled.div`
@@ -15,8 +15,8 @@ export const WindowContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 80vw;
-  height: 70vh;
+  width: 400px;
+  height: 525px;
   flex-direction: column;
   background-color: #f2f2f2;
   box-shadow: 0 8px 6px -6px black;
@@ -28,28 +28,30 @@ export const WindowBar = styled.div`
   height: 10%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 
-export const FakeButton = styled.div`
-  width: 100px;
+export const ButtonDiv = styled.div`
+  width: 70px;
   margin: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  cursor: pointer;
 `;
 
 export const Text = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   width: 100%;
+  height: 500px;
 `;
 export const Title = styled.h1`
-  font-family: "Cutive Mono", monospace;
-  font-size: 50px;
+  font-size: 20px;
   margin-left: 5%;
+  font-weight: bold;
 
   @media screen and (max-width: 420px) {
     font-size: 40px;
@@ -92,11 +94,10 @@ export const GoButton = styled.button`
   border: 1px solid #2f2b32;
   cursor: pointer;
   outline: none;
-  margin-left: 40%;
-  padding: 10px;
+  padding: 5px;
 
   &:hover {
-    background: #2f2b32;
+    background-color: #dfdfdf;
   }
 
   @media screen and (max-width: 420px) {
@@ -107,16 +108,29 @@ export const GoButton = styled.button`
 export const CardLink = styled(Link)`
   color: #2f2b32;
   text-decoration: none;
-  font-size: 50px;
+  font-size: 30px;
   font-family: "Cutive Mono", monospace;
   font-weight: bold;
   width: 100%;
   height: 100%;
-  &:hover {
-    color: #f2f2f2;
-  }
+  // &:hover {
+  //   color: #f2f2f2;
+  // }
 
   @media screen and (max-width: 420px) {
     font-size: 40px;
   }
+`;
+
+const blink = keyframes`
+0% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+`;
+
+export const Underscore = styled.span`
+  animation: ${blink} 0.5s infinite ease;
 `;
