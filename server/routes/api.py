@@ -11,10 +11,12 @@ CORS(api)
 @api.route('/api/question', methods=['POST'])
 def add_question():
     question_response = request.get_json()
-    print('question_response', question_response)
     question = question_response["question"]
     options = (",").join(question_response["options"])
     answer = question_response["answer"]
+
+    if not question or not options or not answer: 
+        return jsonify("there was an issue adding a question")
 
     try:
         new_question = Question(question=question, option=options, answer=answer)

@@ -7,7 +7,7 @@ export const HomepageContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #ffaa2b;
+  background-color: #d07e0e;
 `;
 
 export const WindowContainer = styled.div`

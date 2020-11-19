@@ -1,67 +1,40 @@
 import React, { useState } from "react";
 
-import { CustomizedPage, Addcontainer } from "./styled";
+import { Link } from "react-router-dom";
+import Question from "./Question";
+import Added from "./Added";
+import Error from "./Error";
 
-const DEBUG = process.env.NODE_ENV === "development" ? true : false;
-const PREFIX = DEBUG
-  ? "http://0.0.0.0:8000"
-  : "https://triviaknowledge.herokuapp.com/";
-const api_path = PREFIX + "/api/question";
+import {
+  CustomizedPage,
+  Addcontainer,
+  WindowBar,
+  CloseImage,
+  WindowText,
+} from "./styled";
+import close from "../images/close.svg";
 
 const Customize = () => {
-  const [newQuestion, setNewQuestion] = useState("");
-  const [newQuestionOption1, setNewQuestionOption1] = useState("");
-  const [newQuestionOption2, setNewQuestionOption2] = useState("");
-  const [newQuestionOption3, setNewQuestionOption3] = useState("");
-  const [newQuestionAnswer, setNewQuestionAnswer] = useState("");
-
-  async function addQuestion() {
-    try {
-      const response = await fetch(api_path, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          question: newQuestion,
-          options: [newQuestionOption1, newQuestionOption2, newQuestionOption3],
-          answer: newQuestionAnswer,
-        }),
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.log("error", error);
-    }
-  }
+  const [displayAnother, setDisplayAnother] = useState(false);
+  const [displayError, setDisplayError] = useState(false);
 
   return (
     <CustomizedPage>
       <Addcontainer>
-        <p>Question</p>
-        <input type="text" onChange={(e) => setNewQuestion(e.target.value)} />
-        <p>Wrong Options</p>
-        <div>
-          <input
-            type="text"
-            onChange={(e) => setNewQuestionOption1(e.target.value)}
+        <WindowBar>
+          <WindowText>Add A Question</WindowText>
+          <Link to="/">
+            <CloseImage src={close} alt="fake close" />
+          </Link>
+        </WindowBar>
+        {!displayAnother && !displayError && (
+          <Question
+            setDisplayAnother={setDisplayAnother}
+            setDisplayError={setDisplayError}
           />
-          <input
-            type="text"
-            onChange={(e) => setNewQuestionOption2(e.target.value)}
-          />
-          <input
-            type="text"
-            onChange={(e) => setNewQuestionOption3(e.target.value)}
-          />
-        </div>
-        <p>Answer</p>
-        <input
-          type="text"
-          onChange={(e) => setNewQuestionAnswer(e.target.value)}
-        />
-        <button onClick={() => addQuestion()}>Submit</button>
-        <p>Thank you for contributing</p>
+        )}
+        {displayAnother && <Added setDisplayAnother={setDisplayAnother} />}
+        {displayError && <Error setDisplayError={setDisplayError} />}
       </Addcontainer>
     </CustomizedPage>
   );
