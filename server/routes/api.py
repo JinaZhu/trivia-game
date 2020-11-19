@@ -11,6 +11,7 @@ CORS(api)
 @api.route('/api/question', methods=['POST'])
 def add_question():
     question_response = request.get_json()
+    print('question_response', question_response)
     question = question_response["question"]
     options = (",").join(question_response["options"])
     answer = question_response["answer"]
