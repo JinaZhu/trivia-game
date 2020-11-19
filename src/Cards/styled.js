@@ -14,7 +14,7 @@ const glow = css`
 export const CardsContainer = styled.div`
   ${flexCenter}
   min-height: 100vh;
-  background: #ff4d52;
+  background: #a73e2b;
 `;
 
 //card
@@ -93,7 +93,7 @@ export const Option = styled.div`
       props.hasSubmitted &&
       !props.isCorrect &&
       css`
-        background-color: #b21336;
+        background-color: #a73e2b;
       `
     );
   }}
@@ -103,7 +103,7 @@ export const Option = styled.div`
       props.hasSubmitted &&
       props.isCorrect &&
       css`
-        background-color: #048574;
+        background-color: #2f615e;
       `
     );
   }}

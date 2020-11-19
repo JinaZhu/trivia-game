@@ -44,8 +44,8 @@ export const WindowBody = styled.div`
   align-items: ${(props) => props.align};
   justify-content: center;
   flex-direction: column;
-  height: 525px;
   margin: 20px;
+  height: 475px;
 `;
 
 export const Input = styled.input`
