@@ -8,7 +8,6 @@ import {
   Text,
   Title,
   GoButton,
-  ReadyH2,
   CardLink,
   Underscore,
 } from "./styled";

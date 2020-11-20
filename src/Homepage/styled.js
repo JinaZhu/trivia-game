@@ -81,15 +81,6 @@ export const StartContainer = styled.div`
   }
 `;
 
-export const ReadyH2 = styled.h2`
-  font-size: 30px;
-  margin-left: 30%;
-
-  @media screen and (max-width: 420px) {
-    margin: auto;
-  }
-`;
-
 export const GoButton = styled.button`
   border: 1px solid #2f2b32;
   cursor: pointer;
@@ -113,9 +104,6 @@ export const CardLink = styled(Link)`
   font-weight: bold;
   width: 100%;
   height: 100%;
-  // &:hover {
-  //   color: #f2f2f2;
-  // }
 
   @media screen and (max-width: 420px) {
     font-size: 40px;
