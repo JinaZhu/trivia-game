@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { WindowBody, Input, Textarea, Button } from "./styled";
 
-const DEBUG = process.env.NODE_ENV === "development" ? true : false;
-const PREFIX = DEBUG
-  ? "http://0.0.0.0:8000"
-  : "https://triviaknowledge.herokuapp.com/";
-const api_path = PREFIX + "/api/question";
-
 const Question = ({ setDisplayError, setDisplayAnother }) => {
   const [newQuestion, setNewQuestion] = useState("");
   const [newQuestionOption1, setNewQuestionOption1] = useState("");
@@ -16,19 +10,26 @@ const Question = ({ setDisplayError, setDisplayAnother }) => {
 
   async function addQuestion() {
     try {
-      const response = await fetch(api_path, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          question: newQuestion,
-          options: [newQuestionOption1, newQuestionOption2, newQuestionOption3],
-          answer: newQuestionAnswer,
-        }),
-      });
+      const response = await fetch(
+        "https://triviaknowledgeapi.herokuapp.com/api/addQuestion",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            question: newQuestion,
+            options: [
+              newQuestionOption1,
+              newQuestionOption2,
+              newQuestionOption3,
+            ],
+            answer: newQuestionAnswer,
+          }),
+        }
+      );
       const data = await response.json();
-      if (data === "yayy") {
+      if (data === "Thank you! You question has been added.") {
         setDisplayAnother(true);
       } else {
         setDisplayError(true);
