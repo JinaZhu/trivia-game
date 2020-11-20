@@ -1,36 +1,41 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   HomepageContainer,
   WindowContainer,
   WindowBar,
-  FakeButton,
+  ButtonDiv,
   Text,
   Title,
   GoButton,
-  ReadyH2,
   CardLink,
+  Underscore,
 } from "./styled";
 
-import close from "../images/close.svg";
 import large from "../images/large.svg";
-import minimize from "../images/minimize.svg";
+import plus from "../images/plus.svg";
 
 const Homepage = () => {
   return (
     <HomepageContainer>
       <WindowContainer>
         <WindowBar>
-          <FakeButton>
-            <img src={minimize} alt="fake minimize" width="25" />
-            <img src={large} alt="fake large" width="25" />
-            <img src={close} alt="fake close" width="25" />
-          </FakeButton>
+          <Title>Test Your Knowledge</Title>
+          <ButtonDiv>
+            <Link to="/cards">
+              <img src={large} alt="fake large" width="25" />
+            </Link>
+            <Link to="/customize">
+              <img src={plus} alt="fake close" width="25" />
+            </Link>
+          </ButtonDiv>
         </WindowBar>
         <Text>
-          <Title>Test Your Knowledge</Title>
-          <ReadyH2>Ready_</ReadyH2>
+          <h3>
+            Ready<Underscore>_</Underscore>
+          </h3>
           <GoButton>
-            <CardLink to="/cards">START</CardLink>
+            <CardLink to="/cards">Start</CardLink>
           </GoButton>
         </Text>
       </WindowContainer>

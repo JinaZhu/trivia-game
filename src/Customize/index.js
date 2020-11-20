@@ -18,6 +18,18 @@ const Customize = () => {
   const [displayAnother, setDisplayAnother] = useState(false);
   const [displayError, setDisplayError] = useState(false);
 
+  async function getHello() {
+    try {
+      const response = await fetch(
+        "https://triviaknowledgeapi.herokuapp.com/api/hello"
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+
   return (
     <CustomizedPage>
       <Addcontainer>
@@ -35,6 +47,7 @@ const Customize = () => {
         )}
         {displayAnother && <Added setDisplayAnother={setDisplayAnother} />}
         {displayError && <Error setDisplayError={setDisplayError} />}
+        <button onClick={() => getHello()}></button>
       </Addcontainer>
     </CustomizedPage>
   );
