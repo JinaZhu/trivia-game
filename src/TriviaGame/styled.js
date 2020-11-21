@@ -104,7 +104,7 @@ export const WhiteText = styled.p`
   margin: 20px;
 `;
 
-export const StartButton = styled.button`
+export const GameButton = styled.button`
   outline: none;
   padding: 5px;
   font-family: "Cutive Mono", monospace;
@@ -206,5 +206,6 @@ export const SubmitButton = styled.button`
 
 export const Score = styled.p`
   font-weight: bold;
-  font-size: 20px;
+  font-size: ${(props) => props.size || 20}px;
+  color: ${(props) => props.color || "#2f2b32"};
 `;

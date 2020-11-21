@@ -4,14 +4,19 @@ import {
   QuestionNum,
   NumContainer,
   WhiteText,
-  StartButton,
+  GameButton,
 } from "./styled";
 
 const numberSelectionOptions = [10, 15, 20];
 
-const Start = ({ setIsStart, setIsPlay, setQuestions, setCurrentQuestion }) => {
-  const [numberSelection, setNumberSelection] = useState("");
-
+const Start = ({
+  setIsStart,
+  setIsPlay,
+  setQuestions,
+  setCurrentQuestion,
+  setNumberSelection,
+  numberSelection,
+}) => {
   function isSelected(option) {
     if (option === numberSelection) {
       return true;
@@ -61,7 +66,7 @@ const Start = ({ setIsStart, setIsPlay, setQuestions, setCurrentQuestion }) => {
           );
         })}
       </NumContainer>
-      <StartButton onClick={getQuestions}>Start</StartButton>
+      <GameButton onClick={getQuestions}>Start</GameButton>
     </WindowBody>
   );
 };

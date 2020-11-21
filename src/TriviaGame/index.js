@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   GamePage,
@@ -12,6 +13,7 @@ import {
 import close from "../images/close.svg";
 import Start from "./Start";
 import Play from "./Play";
+import End from "./End";
 
 const TriviaGame = () => {
   const [isStart, setIsStart] = useState(true);
@@ -20,6 +22,7 @@ const TriviaGame = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState("");
   const [score, setScore] = useState(0);
+  const [numberSelection, setNumberSelection] = useState("");
 
   return (
     <GamePage>
@@ -27,7 +30,9 @@ const TriviaGame = () => {
       <Window>
         <WindowBar>
           <WindowTitle>Trivia</WindowTitle>
-          <Image src={close} alt="home button" />
+          <Link to="/">
+            <Image src={close} alt="home button" />
+          </Link>
         </WindowBar>
         {isStart && (
           <Start
@@ -35,15 +40,28 @@ const TriviaGame = () => {
             setIsPlay={setIsPlay}
             setQuestions={setQuestions}
             setCurrentQuestion={setCurrentQuestion}
+            numberSelection={numberSelection}
+            setNumberSelection={setNumberSelection}
           />
         )}
         {isPlay && (
           <Play
             currentQuestion={currentQuestion}
+            setCurrentQuestion={setCurrentQuestion}
             setScore={setScore}
             score={score}
             questions={questions}
-            setCurrentQuestion={setCurrentQuestion}
+            setQuestions={setQuestions}
+            setIsEnd={setIsEnd}
+            setIsPlay={setIsPlay}
+          />
+        )}
+        {isEnd && (
+          <End
+            score={score}
+            numberSelection={numberSelection}
+            setIsStart={setIsStart}
+            setIsEnd={setIsEnd}
           />
         )}
       </Window>

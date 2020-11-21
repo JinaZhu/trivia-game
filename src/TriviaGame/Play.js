@@ -7,10 +7,20 @@ import {
   SubmitButton,
 } from "./styled";
 
-const Play = ({ currentQuestion, setScore, score }) => {
+const Play = ({
+  currentQuestion,
+  setScore,
+  score,
+  setCurrentQuestion,
+  setQuestions,
+  questions,
+  setIsEnd,
+  setIsPlay,
+}) => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [questionNumber, setQuestionNumber] = useState(1);
+  const [isEmpty, setIsEmpty] = useState(false);
 
   function isSelected(option) {
     if (option === selectedOption) {
@@ -29,9 +39,29 @@ const Play = ({ currentQuestion, setScore, score }) => {
   }
 
   function submitQuestion() {
+    if (selectedOption === "") {
+      setIsEmpty(true);
+      return;
+    } else {
+      setHasSubmitted(true);
+    }
     if (selectedOption === currentQuestion.answer) {
       setScore(score + 1);
-      setHasSubmitted(true);
+    }
+  }
+
+  function getNextQuestion() {
+    if (questions.length === 0) {
+      setIsEnd(true);
+      setIsPlay(false);
+    } else {
+      let updatedQuestions = [...questions];
+      const nextQuestion = updatedQuestions.pop();
+      setCurrentQuestion(nextQuestion);
+      setQuestions(updatedQuestions);
+      setQuestionNumber(questionNumber + 1);
+      setHasSubmitted(false);
+      setSelectedOption("");
     }
   }
 
@@ -47,7 +77,9 @@ const Play = ({ currentQuestion, setScore, score }) => {
             isActive={isSelected(option)}
             onClick={() => setSelectedOption(option)}
             isCorrect={checkAnswer(option)}
+            isEmpty={isEmpty}
             hasSubmitted={hasSubmitted}
+            onAnimationEnd={() => setIsEmpty(false)}
           >
             <p>{option}</p>
           </Option>
@@ -55,9 +87,13 @@ const Play = ({ currentQuestion, setScore, score }) => {
       })}
       <ButtonContainer>
         {!hasSubmitted && (
-          <SubmitButton onClick={submitQuestion}>Submit</SubmitButton>
+          <SubmitButton onClick={submitQuestion} disabled={hasSubmitted}>
+            Submit
+          </SubmitButton>
         )}
-        {hasSubmitted && <SubmitButton>Next</SubmitButton>}
+        {hasSubmitted && (
+          <SubmitButton onClick={getNextQuestion}>Next</SubmitButton>
+        )}
       </ButtonContainer>
     </WindowBody>
   );
