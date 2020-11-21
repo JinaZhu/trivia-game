@@ -22,7 +22,7 @@ const Homepage = () => {
         <WindowBar>
           <Title>Test Your Knowledge</Title>
           <ButtonDiv>
-            <Link to="/cards">
+            <Link to="/playGame">
               <img src={large} alt="fake large" width="25" />
             </Link>
             <Link to="/customize">
