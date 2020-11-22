@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { CardsContainer, Score } from "./styled";
 
-import CurrentCard from "./CurrentCard";
+import Question from "./Question";
 import Finish from "./Finish";
 import triviaQuestions from "./triviaQuestions";
 
 export function selectRandomQuestions(triviaQuestions) {
-  const questions = [];
+  const question_indexes = [];
   const totalQuestions = triviaQuestions.length;
 
-  while (questions.length !== 10) {
+  while (question_indexes.length !== 10) {
     const random_index = Math.floor(Math.random() * Math.floor(totalQuestions));
-    if (!questions.includes(random_index)) {
-      questions.push(random_index);
+    if (!question_indexes.includes(random_index)) {
+      question_indexes.push(random_index);
     }
   }
-  return questions;
+  return question_indexes;
 }
 
 const currentRoundQuestions = selectRandomQuestions(triviaQuestions);
@@ -37,7 +37,7 @@ export function getRandomizedOptions(question) {
 const options = getRandomizedOptions(firstQuestion);
 firstQuestion["options"] = options;
 
-const Cards = () => {
+const Game = () => {
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestion, setCurrentQuestion] = useState(firstQuestion);
@@ -67,7 +67,7 @@ const Cards = () => {
     <CardsContainer>
       {!isFinished && <Score size={25}>Score: {score}</Score>}
       {!isFinished && (
-        <CurrentCard
+        <Question
           question={currentQuestion}
           setScore={setScore}
           score={score}
@@ -84,4 +84,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default Game;
