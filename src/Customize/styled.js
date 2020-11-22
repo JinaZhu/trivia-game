@@ -12,7 +12,9 @@ export const Addcontainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 400px;
+  flex-direction: column; 
+  width: 325px;
+  height: 525px
   flex-direction: column;
   border: 1px solid #2f2b32;
   background-color: #f2f2f2;
@@ -25,10 +27,11 @@ export const WindowBar = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 10%;
 `;
 
 export const CloseImage = styled.img`
-  width: 20px;
+  width: 25px;
   margin-right: 10px;
   cursor: pointer;
 `;
