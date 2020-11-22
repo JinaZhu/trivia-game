@@ -15,7 +15,7 @@ export const WindowContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 400px;
+  width: 350px;
   height: 525px;
   flex-direction: column;
   background-color: #f2f2f2;
@@ -48,14 +48,10 @@ export const Text = styled.div`
   width: 100%;
   height: 500px;
 `;
-export const Title = styled.h1`
-  font-size: 20px;
+export const Title = styled.h2`
   margin-left: 5%;
   font-weight: bold;
-
-  @media screen and (max-width: 420px) {
-    font-size: 40px;
-  }
+  font-size: 16px;
 `;
 
 export const TitleContainer = styled.div`
