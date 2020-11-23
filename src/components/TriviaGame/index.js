@@ -10,7 +10,7 @@ import {
   WindowTitle,
   Score,
 } from "./styled";
-import close from "../images/close.svg";
+import close from "../../images/close.svg";
 import Start from "./Start";
 import Play from "./Play";
 import End from "./End";

@@ -1,25 +1,27 @@
 import React, { useState } from "react";
 import { CardsContainer, Score } from "./styled";
 
-import CurrentCard from "./CurrentCard";
+import Question from "./Question";
 import Finish from "./Finish";
 import triviaQuestions from "./triviaQuestions";
 
-export function selectRandomQuestions(triviaQuestions) {
-  const questions = [];
+export function selectRandomQuestionIndexes(triviaQuestions) {
+  const questionIndexes = [];
   const totalQuestions = triviaQuestions.length;
 
-  while (questions.length !== 10) {
+  while (questionIndexes.length !== 10) {
     const random_index = Math.floor(Math.random() * Math.floor(totalQuestions));
-    if (!questions.includes(random_index)) {
-      questions.push(random_index);
+    if (!questionIndexes.includes(random_index)) {
+      questionIndexes.push(random_index);
     }
   }
-  return questions;
+  return questionIndexes;
 }
 
-const currentRoundQuestions = selectRandomQuestions(triviaQuestions);
-const firstQuestion = triviaQuestions[currentRoundQuestions.pop()];
+const currentRoundQuestionsIndexes = selectRandomQuestionIndexes(
+  triviaQuestions
+);
+const firstQuestion = triviaQuestions[currentRoundQuestionsIndexes.pop()];
 
 export function getRandomizedOptions(question) {
   const allOptions = question.incorrect.concat(question.correct);
@@ -37,19 +39,19 @@ export function getRandomizedOptions(question) {
 const options = getRandomizedOptions(firstQuestion);
 firstQuestion["options"] = options;
 
-const Cards = () => {
+const Game = () => {
+  const [currentQuestion, setCurrentQuestion] = useState(firstQuestion);
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
-  const [currentQuestion, setCurrentQuestion] = useState(firstQuestion);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(1);
 
   function getNextQuestion() {
-    if (currentRoundQuestions.length === 0) {
+    if (currentRoundQuestionsIndexes.length === 0) {
       setIsFinished(true);
     } else {
-      const nextQuestion = triviaQuestions[currentRoundQuestions.pop()];
+      const nextQuestion = triviaQuestions[currentRoundQuestionsIndexes.pop()];
       const nextOptions = getRandomizedOptions(nextQuestion);
       nextQuestion["options"] = nextOptions;
       setCurrentQuestion(nextQuestion);
@@ -67,7 +69,7 @@ const Cards = () => {
     <CardsContainer>
       {!isFinished && <Score size={25}>Score: {score}</Score>}
       {!isFinished && (
-        <CurrentCard
+        <Question
           question={currentQuestion}
           setScore={setScore}
           score={score}
@@ -84,4 +86,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default Game;

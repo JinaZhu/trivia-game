@@ -12,8 +12,8 @@ import {
   Underscore,
 } from "./styled";
 
-import large from "../images/large.svg";
-import plus from "../images/plus.svg";
+import large from "../../images/large.svg";
+import plus from "../../images/plus.svg";
 
 const Homepage = () => {
   return (

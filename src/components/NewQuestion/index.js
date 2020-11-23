@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
-import Question from "./Question";
+import Adding from "./Adding";
 import Added from "./Added";
 import Error from "./Error";
 
@@ -12,9 +12,9 @@ import {
   CloseImage,
   WindowText,
 } from "./styled";
-import close from "../images/close.svg";
+import close from "../../images/close.svg";
 
-const Customize = () => {
+const NewQuestion = () => {
   const [displayAnother, setDisplayAnother] = useState(false);
   const [displayError, setDisplayError] = useState(false);
 
@@ -28,7 +28,7 @@ const Customize = () => {
           </Link>
         </WindowBar>
         {!displayAnother && !displayError && (
-          <Question
+          <Adding
             setDisplayAnother={setDisplayAnother}
             setDisplayError={setDisplayError}
           />
@@ -40,4 +40,4 @@ const Customize = () => {
   );
 };
 
-export default Customize;
+export default NewQuestion;

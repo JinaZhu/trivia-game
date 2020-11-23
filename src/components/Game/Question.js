@@ -9,7 +9,7 @@ import {
   ButtonContainer,
 } from "./styled";
 
-import close from "../images/close.svg";
+import close from "../../images/close.svg";
 
 const CurrentCard = ({
   question,
@@ -29,8 +29,9 @@ const CurrentCard = ({
       setSelectedOption(option);
     }
   }
-  function checkSelect(selected) {
-    if (selected === selectedOption) {
+
+  function checkSelected(option) {
+    if (option === selectedOption) {
       return true;
     } else {
       return false;
@@ -45,15 +46,14 @@ const CurrentCard = ({
     }
   }
 
-  function matchAnswer(e, finalAnswer) {
-    e.preventDefault();
-    if (finalAnswer === "") {
+  function submitAnswer(finalSelectedOption) {
+    if (finalSelectedOption === "") {
       setIsEmpty(true);
       return;
     } else {
       setHasSubmitted(true);
     }
-    if (finalAnswer === question.correct) {
+    if (finalSelectedOption === question.correct) {
       setScore(score + 1);
     }
   }
@@ -72,11 +72,11 @@ const CurrentCard = ({
           <Option
             key={option}
             isCorrect={checkCorrectAnswer(option)}
-            onClick={() => setSelectedValue(option)}
-            isActive={checkSelect(option)}
+            isActive={checkSelected(option)}
             isEmpty={isEmpty}
-            onAnimationEnd={() => setIsEmpty(false)}
             hasSubmitted={hasSubmitted}
+            onClick={() => setSelectedValue(option)}
+            onAnimationEnd={() => setIsEmpty(false)}
           >
             <p>{option}</p>
           </Option>
@@ -85,7 +85,7 @@ const CurrentCard = ({
       <ButtonContainer>
         {!hasSubmitted && (
           <SubmitButton
-            onClick={(e) => matchAnswer(e, selectedOption)}
+            onClick={(e) => submitAnswer(selectedOption)}
             disabled={hasSubmitted}
           >
             Submit
