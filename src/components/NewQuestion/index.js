@@ -12,7 +12,7 @@ import {
   CloseImage,
   WindowText,
 } from "./styled";
-import close from "../images/close.svg";
+import close from "../../images/close.svg";
 
 const NewQuestion = () => {
   const [displayAnother, setDisplayAnother] = useState(false);

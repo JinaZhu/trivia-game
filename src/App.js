@@ -2,10 +2,10 @@ import React from "react";
 import { HashRouter, Route } from "react-router-dom";
 
 import "./App.css";
-import Homepage from "./Homepage";
-import Game from "./Game";
-import NewQuestion from "./NewQuestion";
-import TriviaGame from "./TriviaGame";
+import Homepage from "./components/Homepage";
+import Game from "./components/Game";
+import NewQuestion from "./components/NewQuestion";
+import TriviaGame from "./components/TriviaGame";
 
 function App() {
   return (

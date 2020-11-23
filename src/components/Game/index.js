@@ -5,21 +5,23 @@ import Question from "./Question";
 import Finish from "./Finish";
 import triviaQuestions from "./triviaQuestions";
 
-export function selectRandomQuestions(triviaQuestions) {
-  const question_indexes = [];
+export function selectRandomQuestionIndexes(triviaQuestions) {
+  const questionIndexes = [];
   const totalQuestions = triviaQuestions.length;
 
-  while (question_indexes.length !== 10) {
+  while (questionIndexes.length !== 10) {
     const random_index = Math.floor(Math.random() * Math.floor(totalQuestions));
-    if (!question_indexes.includes(random_index)) {
-      question_indexes.push(random_index);
+    if (!questionIndexes.includes(random_index)) {
+      questionIndexes.push(random_index);
     }
   }
-  return question_indexes;
+  return questionIndexes;
 }
 
-const currentRoundQuestions = selectRandomQuestions(triviaQuestions);
-const firstQuestion = triviaQuestions[currentRoundQuestions.pop()];
+const currentRoundQuestionsIndexes = selectRandomQuestionIndexes(
+  triviaQuestions
+);
+const firstQuestion = triviaQuestions[currentRoundQuestionsIndexes.pop()];
 
 export function getRandomizedOptions(question) {
   const allOptions = question.incorrect.concat(question.correct);
@@ -38,18 +40,18 @@ const options = getRandomizedOptions(firstQuestion);
 firstQuestion["options"] = options;
 
 const Game = () => {
+  const [currentQuestion, setCurrentQuestion] = useState(firstQuestion);
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
-  const [currentQuestion, setCurrentQuestion] = useState(firstQuestion);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(1);
 
   function getNextQuestion() {
-    if (currentRoundQuestions.length === 0) {
+    if (currentRoundQuestionsIndexes.length === 0) {
       setIsFinished(true);
     } else {
-      const nextQuestion = triviaQuestions[currentRoundQuestions.pop()];
+      const nextQuestion = triviaQuestions[currentRoundQuestionsIndexes.pop()];
       const nextOptions = getRandomizedOptions(nextQuestion);
       nextQuestion["options"] = nextOptions;
       setCurrentQuestion(nextQuestion);

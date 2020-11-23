@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, PlayAgainButton, Score, CardWindowBar } from "./styled";
-import close from "../images/close.svg";
+import close from "../../images/close.svg";
 
 const Finish = ({ score }) => {
   function reload() {

@@ -172,4 +172,6 @@ export const PlayAgainButton = styled.button`
 export const Score = styled.p`
   font-size: ${(props) => props.size || 50}px;
   margin: 0 0 20px 0;
+  color: #f2f2f2;
+  font-weight: bold;
 `;
