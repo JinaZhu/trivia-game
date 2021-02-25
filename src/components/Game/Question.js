@@ -11,7 +11,7 @@ import {
 
 import close from "../../images/close.svg";
 
-const CurrentCard = ({
+const CurrentQuestion = ({
   question,
   setScore,
   score,
@@ -101,4 +101,4 @@ const CurrentCard = ({
   );
 };
 
-export default CurrentCard;
+export default CurrentQuestion;
